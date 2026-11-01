@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Defender – Minimalistyczna Ochrona Discorda</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#00e5ff',
+                            cyanHover: '#00b8d4',
+                            dark: '#0b0f17',
+                            card: '#131926',
+                            border: '#1f293d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f17;
+            color: #f0f6fc;
+        }
+        .glow-cyan {
+            box-shadow: 0 0 35px -5px rgba(0, 229, 255, 0.3);
+        }
+        .glow-cyan-lg {
+            box-shadow: 0 0 60px -10px rgba(0, 229, 255, 0.4);
+        }
+        .gradient-title {
+            background: linear-gradient(135deg, #ffffff 30%, #00e5ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-cyan selection:text-black">
+
+    <!-- Ambient Neon Background Effect -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-brand-cyan/10 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/2 -right-40 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Header / Nav -->
+    <header class="relative z-50 w-full border-b border-brand-border/80 bg-brand-dark/90 backdrop-blur-md sticky top-0">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+            
+            <!-- Logo & Brand Name -->
+            <a href="#" class="flex items-center space-x-3 shrink-0">
+                <div class="w-9 h-10 flex items-center justify-center">
+                    <!-- SVG Shield Logo matching 2-dots design -->
+                    <svg class="w-full h-full text-brand-cyan drop-shadow-[0_0_8px_rgba(0,229,255,0.6)]" viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 50 10 L 90 28 V 65 C 90 92 50 110 50 110 C 50 110 10 92 10 65 V 28 Z" />
+                        <circle cx="38" cy="60" r="7.5" fill="currentColor" stroke="none" />
+                        <circle cx="62" cy="60" r="7.5" fill="currentColor" stroke="none" />
+                    </svg>
+                </div>
+                <span class="text-lg sm:text-xl font-bold tracking-tight text-white">Server Defender</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+                <a href="#features" class="hover:text-brand-cyan transition-colors">Funkcje</a>
+                <a href="#setup" class="hover:text-brand-cyan transition-colors">Instrukcja /setup</a>
+                <a href="#status" class="hover:text-brand-cyan transition-colors">Status</a>
+            </nav>
+
+            <!-- CTA Button Header -->
+            <a href="https://discord.com/oauth2/authorize?client_id=1566393264959918080" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-brand-cyan hover:bg-brand-cyanHover text-black font-bold text-xs sm:text-sm transition duration-200 shadow-lg shadow-brand-cyan/20 flex items-center space-x-1.5 shrink-0">
+                <span>Dodaj do Discorda</span>
+                <svg class="w-4 h-4 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16">
+        
+        <!-- Hero Section -->
+        <section class="flex flex-col items-center text-center space-y-8">
+            
+            <!-- Shield Logo Hero Display -->
+            <div class="relative group">
+                <div class="absolute inset-0 bg-brand-cyan/20 rounded-3xl blur-2xl group-hover:bg-brand-cyan/35 transition duration-500"></div>
+                <div class="relative w-28 h-28 sm:w-36 sm:h-36 bg-brand-card border border-brand-cyan/40 rounded-3xl flex items-center justify-center glow-cyan-lg">
+                    <svg class="w-16 h-16 sm:w-22 sm:h-22 text-brand-cyan" viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 50 10 L 90 28 V 65 C 90 92 50 110 50 110 C 50 110 10 92 10 65 V 28 Z" />
+                        <circle cx="38" cy="60" r="7.5" fill="currentColor" stroke="none" />
+                        <circle cx="62" cy="60" r="7.5" fill="currentColor" stroke="none" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <div class="max-w-4xl space-y-4">
+                <div class="inline-flex items-center space-x-2 py-1 px-3.5 rounded-full text-xs font-semibold tracking-wider text-brand-cyan bg-brand-cyan/10 border border-brand-cyan/30 uppercase">
+                    <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                    <span>System Honeypot Discord</span>
+                </div>
+                
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Minimalistyczna ochrona Twojego <span class="gradient-title">serwera Discord</span>
+                </h1>
+                
+                <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto font-normal leading-relaxed">
+                    Automatyczny system pułapek wyłapujący spamy, boty reklamowe oraz konta phishingowe w kilka milisekund, zachowując czystość Twojego serwera.
+                </p>
+            </div>
+
+            <!-- Main CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
+                <a href="https://discord.com/oauth2/authorize?client_id=1566393264959918080" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="px-8 py-4 rounded-xl bg-brand-cyan hover:bg-brand-cyanHover text-black font-extrabold text-base transition duration-200 shadow-xl shadow-brand-cyan/25 text-center flex items-center justify-center space-x-2">
+                    <span>🛡️ Zaproś Server Defender</span>
+                </a>
+                <a href="#setup" 
+                   class="px-8 py-4 rounded-xl bg-brand-card border border-brand-border hover:border-gray-500 text-gray-300 font-semibold text-base transition duration-200 text-center">
+                    Zobacz komendę /setup
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section id="features" class="mt-28">
+            <div class="text-center mb-14">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Trzy filary pełnego bezpieczeństwa</h2>
+                <p class="text-gray-400 text-sm mt-2">Zaprojektowane, by działać cicho, natychmiastowo i bezobsługowo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="rounded-2xl p-7 bg-brand-card border border-brand-border hover:border-brand-cyan/50 transition duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center mb-5 text-2xl">
+                            🍯
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors">System Honeypot</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Utwórz ukryty lub specjalny kanał-pułapkę. Zwykli gracze go ignorują, ale zautomatyzowane boty i spamerzy wyślą tam wiadomość – natychmiast uwalniając blokadę.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="rounded-2xl p-7 bg-brand-card border border-brand-border hover:border-brand-cyan/50 transition duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center mb-5 text-2xl">
+                            ⚙️
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors">Komenda /setup</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Intuicyjna konfiguracja w minutę. Ustawienia kanału logów oraz pułapki zapisują się trwale w bazie danych jednym poleceniem Slash.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="rounded-2xl p-7 bg-brand-card border border-brand-border hover:border-brand-cyan/50 transition duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center mb-5 text-2xl">
+                            📜
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors">Przejrzyste Logi</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Każdy wykryty spamer natychmiast generuje powiadomienie Embed w Twoim kanale administracyjnym wraz z podglądem przechwyconej wiadomości.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Command & Config Preview Section -->
+        <section id="setup" class="mt-28">
+            <div class="bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-10 relative overflow-hidden glow-cyan">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    
+                    <div class="space-y-4">
+                        <span class="text-xs font-mono tracking-widest text-brand-cyan uppercase">Szybki start</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white">Konfiguracja w kilka sekund</h2>
+                        <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                            Wystarczy wywołać komendę <code class="bg-black/60 text-brand-cyan px-2 py-0.5 rounded font-mono text-sm">/setup</code> na serwerze i wskazać odpowiednie kanały. Bot automatycznie wdroży reguły ochrony.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-300 pt-2">
+                            <li class="flex items-center space-x-2">
+                                <span class="text-brand-cyan">✓</span>
+                                <span>Wybierz kanał pułapki (Honeypot)</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="text-brand-cyan">✓</span>
+                                <span>Określ kanał dziennika zdarzeń (Logi)</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="text-brand-cyan">✓</span>
+                                <span>Włącz natychmiastowy auto-ban dla wykrytych botów</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Terminal / Mock UI Code Box -->
+                    <div class="bg-black/80 border border-brand-border rounded-2xl p-4 sm:p-5 font-mono text-xs shadow-2xl">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-brand-border/80">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                            </div>
+                            <span class="text-gray-500 text-[11px]">Discord Slash Command</span>
+                        </div>
+                        
+                        <div class="space-y-3 text-gray-300">
+                            <div>
+                                <span class="text-brand-cyan font-semibold">/setup</span> 
+                                <span class="text-purple-400">honeypot_channel:</span><span class="text-gray-400">#pulapka-boty</span> 
+                                <span class="text-purple-400">log_channel:</span><span class="text-gray-400">#logi-defender</span>
+                            </div>
+                            
+                            <div class="p-3 bg-brand-card/90 rounded border border-brand-cyan/30 text-gray-200">
+                                <div class="flex items-center space-x-2 text-brand-cyan font-bold mb-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                    <span>Server Defender — Konfiguracja Zapisana</span>
+                                </div>
+                                <p class="text-gray-400 text-[11px]">
+                                    • Kanał Honeypot: <span class="text-white">#pulapka-boty</span><br>
+                                    • Kanał Logów: <span class="text-white">#logi-defender</span><br>
+                                    • Status: <span class="text-emerald-400 font-semibold">OCHRONA AKTYWNA</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full border-t border-brand-border/80 bg-brand-dark/95 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 text-xs sm:text-sm text-gray-500">
+            <div class="flex items-center space-x-2">
+                <svg class="w-5 h-5 text-brand-cyan" viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 50 10 L 90 28 V 65 C 90 92 50 110 50 110 C 50 110 10 92 10 65 V 28 Z" />
+                    <circle cx="38" cy="60" r="8" fill="currentColor" stroke="none" />
+                    <circle cx="62" cy="60" r="8" fill="currentColor" stroke="none" />
+                </svg>
+                <span class="font-semibold text-gray-300">Server Defender</span>
+            </div>
+            <div>
+                &copy; 2026 Server Defender. Wszystkie prawa zastrzeżone.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
